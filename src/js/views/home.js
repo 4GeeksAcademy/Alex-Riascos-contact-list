@@ -1,15 +1,40 @@
-import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useContext, useState } from "react";
 import "../../styles/home.css";
+import { Context } from "../store/appContext";
+import ContactCard from "../component/contactCard"
+import Modal from "../component/modal"
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
-	</div>
-);
+export const Home = () => {
+	const [show, setShow] = useState(false)
+	const [contacto, setContacto] = useState(null)
+	const { store, actions } = useContext(Context)
+
+	return (
+		<>
+			<div className="container">
+				<div className="row">
+
+					<div className="col-md-10">
+						{
+							store.contactsList.length > 0 &&
+							store.contactsList.map((contact) => {
+								return (
+									<ContactCard {...contact} key={contact.id} onClick={() => {
+										setContacto(contact)
+										setShow(true)
+									}} />
+								)
+							})
+						}
+					</div>
+				</div>
+			</div>
+			<Modal
+				show={show}
+				setShow={setShow}
+				contacto={contacto}				
+				deleteContact={actions.deleteContact}
+			/>
+		</>
+	)
+};
