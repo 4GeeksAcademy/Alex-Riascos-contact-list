@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { useParams, useNavigate } from "react-router";
+import { Link } from 'react-router-dom';
 
 
 const AddNewContact = () => {
@@ -79,9 +80,11 @@ const AddNewContact = () => {
                         save
                     </button>
 
-                    <a href="#" class="text-decoration-underline" onClick={() => navigate("/")}>
+
+                    <Link to="/" className="text-decoration-underline" onClick={() => navigate("/")}>
                         Or get back to contacts
-                    </a>
+                    </Link>
+
                 </div>
             </div>
         </div>
