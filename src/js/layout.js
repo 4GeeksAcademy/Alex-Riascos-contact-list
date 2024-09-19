@@ -7,7 +7,8 @@ import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
-import AddContact from "./views/addNewContact";
+import AddNewContact from "./views/addNewContact";
+import Modal from "./component/modal";
 
 const Layout = () => {
 
@@ -19,8 +20,8 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Routes>
-						<Route path="/addContact" element={<AddContact />} />
-						<Route path="/editContact/:contact_id" element={<AddContact />} />
+						<Route path="/addContact" element={<AddNewContact />} />
+						<Route path="/editContact/:contact_id" element={<AddNewContact />} />
 						<Route path="/" element={<Home />} />
 						<Route path="/single/:theid" element={<Single />} />
 						<Route path="*" element={<h1>Not found!</h1>} />

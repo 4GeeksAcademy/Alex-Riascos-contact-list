@@ -37,8 +37,8 @@ const AddNewContact = () => {
     };
 
     useEffect(() => {
-        if (Array.isArray(store.contacts)) {
-            const contacts = [...store.contacts];
+        if (Array.isArray(store.contactsList)) {
+            const contacts = [...store.contactsList];
             if (contact_id !== undefined) {
                 const contact = contacts.find((item) => item.id === parseInt(contact_id));
                 setName(contact?.name);
@@ -47,7 +47,7 @@ const AddNewContact = () => {
                 setPhone(contact?.phone);
             }
         }
-    }, [store.contacts, contact_id]);
+    }, [store.contactsList, contact_id]);
 
     return (
         <div className="container">
@@ -56,30 +56,55 @@ const AddNewContact = () => {
                     <h3 className="text-center">{contact_id ? "Edit" : "Add a new"} contact</h3>
                 </div>
                 <div className="col-m-12">
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">Full Name</label>
-                        <input type="text" className="form-control" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} />
+                    <div className="mb-3">
+                        <label htmlFor="formGroupExampleInput" className="form-label">Full Name</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Full Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
                     </div>
 
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">Email</label>
-                        <input type="text" className="form-control" placeholder="Enter phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                    <div className="mb-3">
+                        <label htmlFor="formGroupExampleInput" className="form-label">Email</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter phone"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                        />
                     </div>
 
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">Phone</label>
-                        <input type="email" className="form-control" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <div className="mb-3">
+                        <label htmlFor="formGroupExampleInput" className="form-label">Phone</label>
+                        <input
+                            type="email"
+                            className="form-control"
+                            placeholder="Enter email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                     </div>
 
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">Address</label>
-                        <input type="text" className="form-control" placeholder="Enter address" value={address} onChange={(e) => setAddress(e.target.value)} />
+                    <div className="mb-3">
+                        <label htmlFor="formGroupExampleInput" className="form-label">Address</label>
+                        <input 
+                            type="text" 
+                            className="form-control" 
+                            placeholder="Enter address" 
+                            value={address} 
+                            onChange={(e) => setAddress(e.target.value)} 
+                        />
                     </div>
 
-                    <button className="btn btn-primary w-100" onClick={handleSubmit}>
-                        save
-                    </button>
-
+                    <Link to="/" className="text-decoration-underline" onClick={handleSubmit}>
+                        <button className="btn btn-primary w-100" >
+                            save
+                        </button>
+                    </Link>
 
                     <Link to="/" className="text-decoration-underline" onClick={() => navigate("/")}>
                         Or get back to contacts

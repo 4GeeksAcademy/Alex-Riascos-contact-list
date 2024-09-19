@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import imagen from "../../img/deadpool.png"
 import { Link } from "react-router-dom";
 
-const ContactCard = ({ id, name, email, phone, address, onClick }) => {
+
+const ContactCard = ({ id, name, email, phone, address, onClickModal }) => {
+
     return (
         <div className="card mb-3">
             <div className="row g-0 justify-content-between">
@@ -14,8 +16,8 @@ const ContactCard = ({ id, name, email, phone, address, onClick }) => {
                         <h4 className="card-title">{name}</h4>
 
                         <p className="card-text mb-1"><i className="fa-solid fa-location-dot"></i> {address}</p>
-                        <p className="card-text mb-1"><i className="fa-solid fa-phone"></i> {phone}</p>
-                        <p className="card-text mb-1"><i className="fa-regular fa-envelope"></i> {email}</p>
+                        <p className="card-text mb-1"> <i className="fa-solid fa-phone"></i> {email}</p>
+                        <p className="card-text mb-1"><i className="fa-regular fa-envelope"></i> {phone}</p>                       
 
                     </div>
                 </div>
@@ -25,7 +27,12 @@ const ContactCard = ({ id, name, email, phone, address, onClick }) => {
                         <Link className="btn" to={`/editContact/${id}`}> <i className="fa-solid fa-pen"></i> </Link>
                     </div>
                     <div className="btn mx-0 px-0">
-                        <button className="btn" onClick={onClick}> <i className="fa-solid fa-trash"></i> </button>
+                        <Link className="btn" onClick={() => {
+                            onClickModal();
+                        }}>
+                            <i className="fa-solid fa-trash"></i>
+
+                        </Link>
                     </div>
 
                 </div>

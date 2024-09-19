@@ -5,7 +5,7 @@ import ContactCard from "../component/contactCard"
 import Modal from "../component/modal"
 
 export const Home = () => {
-	const [show, setShow] = useState(false)
+	const [showModal, setShowModal] = useState(false)
 	const [contacto, setContacto] = useState(null)
 	const { store, actions } = useContext(Context)
 
@@ -19,9 +19,9 @@ export const Home = () => {
 							store.contactsList.length > 0 &&
 							store.contactsList.map((contact) => {
 								return (
-									<ContactCard {...contact} key={contact.id} onClick={() => {
+									<ContactCard {...contact} key={contact.id} onClickModal={() => {
 										setContacto(contact)
-										setShow(true)
+										setShowModal(true)
 									}} />
 								)
 							})
@@ -30,9 +30,9 @@ export const Home = () => {
 				</div>
 			</div>
 			<Modal
-				show={show}
-				setShow={setShow}
-				contacto={contacto}				
+				showModal={showModal}
+				setShowModal={setShowModal}
+				contacto={contacto}
 				deleteContact={actions.deleteContact}
 			/>
 		</>

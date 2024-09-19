@@ -117,9 +117,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (response.status === 204) {
 						getAgenda();
 					}
-
-					const responseData = await response.json();
-					console.log(responseData);
 				} catch (error) {
 					console.error('Error al eliminar el contacto:', error);
 				}
